@@ -13,7 +13,7 @@ body {
 
 #page-content {
     flex: 1 0 auto;
-    background-color: lightgrey;
+    background-color: #e6e6e6;
 }
 
 #sticky-footer {
@@ -43,4 +43,14 @@ body {
     background-color: rgba(0,0,0,0.4);
 }
 
+.description {
+    height: 80px;
+}
 
+.edit-button {
+    text-decoration: none;
+}
+
+.edit-button:hover {
+    color: #fafafa;
+}

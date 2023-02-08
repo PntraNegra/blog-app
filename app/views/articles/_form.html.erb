@@ -1,27 +1,38 @@
-<%= form_with(model: article) do |form| %>
-  <% if article.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
-      <ul>
-        <% article.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div class="container-fluid bg-info pt-5 pb-5 card shadow mt-5">
+  <%= form_with(model: article) do |form| %>
+
+      <% if article.errors.any? %>
+        <div  class="alert alert-danger alert-dismissible fade show" role="alert">
+          <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+          <ul>
+            <% article.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            
+        </div>
+      <% end %>
+
+    <div class="mb-3 form-group row">
+      <div class="col-sm-2 col-form-label">
+        <%= form.label :title, class: "form-label text-light" %>
+      </div>
+      <div class="col-sm-10">
+        <%= form.text_field :title, class: "form-control shadow", placeholder: "Title" %>
+      </div>
+    </div>
+    <div class="mb-3 form-group row">
+      <div class="col-sm-2 col-form-label">
+        <%= form.label :description, class: "form-label text-light" %>
+      </div>
+      <div class="col-sm-10">
+        <%= form.text_area :description, class: "form-control description shadow", placeholder: "Begin typing here..." %>
+      </div>
+    </div>
+    <div>
+      <%= form.submit class: "btn btn-outline-light shadow" %>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
