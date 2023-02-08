@@ -1,18 +1,17 @@
 <div class="container">
-<div  class="alert alert-success alert-dismissible fade show" role="alert">
+<% if notice%>
+<div  class="alert alert-success alert-dismissible fade show m-2" role="alert">
   <p><%= notice %></p>
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
-  <h1>Articles</h1>
+<% end %>
+  <h1 class="text-center">Articles</h1>
   <div class="d-flex">
-    <form class="d-flex" role="search">
+    <%= link_to "  New", new_article_path, class: "btn btn-outline-success fa fa-pencil" %>
+    <form class="d-flex ms-auto" role="search">
       <input class="form-control me-2" type="search" placeholder="Search Articles" aria-label="Search">
       <button class="btn btn-outline-primary me-2" type="submit">Search</button>
     </form>
-
-
-    <%= link_to "  New", new_article_path, class: "ms-auto btn btn-outline-success fa fa-pencil" %>
-
     <!--
       <button class="btn btn-outline-success edit-button">
         <%= link_to "New ", new_article_path, class: "edit-button" %>
