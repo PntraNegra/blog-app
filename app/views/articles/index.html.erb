@@ -24,7 +24,7 @@
   <% @articles.each do |article| %>
     <div class="card mt-5 mb-5 shadow text-center">
       <div class="card-header">
-        <strong><em>by Placeholder</em></strong>
+        <strong><em><%= article.user.username if article.user %></em></strong>
       </div>
       <div class="card-body">
         <h5 class="card-title">
@@ -40,7 +40,8 @@
         </div>
       </div>
       <div class="card-footer text-muted">
-          placeholder days ago
+          <small>Created <%= time_ago_in_words(article.created_at) %> 
+          edited <%= time_ago_in_words(article.updated_at) %> ago</small>
       </div>
     </div>
   <% end %>
