@@ -3,7 +3,8 @@
   <h1 class="text-center"><%= user.username.upcase %></h1>
   <h3 class="text-center">Posts</h3>
 
-    <% @user.articles.each do |article| %>
+  <%= will_paginate @user_articles, class: "apple_pagination mt-5 mb-5" %>
+    <% @user_articles.each do |article| %>
       <div class="card mt-5 mb-5 shadow text-center">
         <div class="card-header">
           <strong><em><%= article.user.username if article.user %></em></strong>
@@ -27,4 +28,5 @@
         </div>
       </div>
     <% end %>
+    <%= will_paginate @user_articles, class: "apple_pagination mt-5 mb-5" %>
 </div>

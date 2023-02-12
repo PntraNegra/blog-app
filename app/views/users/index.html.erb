@@ -7,6 +7,8 @@
   <% end %>
   <h1 class="text-center">Users</h1>
 
+  <%= will_paginate @users, class: "apple_pagination mt-5 mb-5" %>
+
   <div id="users">
     <% @users.each do |user| %>
       <div class="card mt-5 mb-5 shadow text-center">
@@ -28,6 +30,6 @@
       </div>
     <% end %>
   </div>
-
+  <%= will_paginate @users, class: "apple_pagination mt-5 mb-5" %>
   <%= link_to "Sign Up", signup_path %>
 </div>

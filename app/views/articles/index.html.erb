@@ -20,7 +20,7 @@
     -->
   </div>
 
-
+  <%= will_paginate @articles, class: "apple_pagination mt-5 mb-5" %>
   <% @articles.each do |article| %>
     <div class="card mt-5 mb-5 shadow text-center">
       <div class="card-header">
@@ -45,4 +45,6 @@
       </div>
     </div>
   <% end %>
+
+  <%= will_paginate @articles, class: "apple_pagination mt-5 mb-5" %>
 </div>
