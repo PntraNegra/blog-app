@@ -24,7 +24,7 @@
   <% @articles.each do |article| %>
     <div class="card mt-5 mb-5 shadow text-center">
       <div class="card-header">
-        <strong><em><%= article.user.username if article.user %></em></strong>
+        <strong><em><%= link_to article.user.username, user_path(article.user) %></em></strong>
       </div>
       <div class="card-body">
         <h5 class="card-title">
@@ -35,8 +35,10 @@
         </p>
         <div class="text-center">
           <%= link_to "View", article, class: "btn btn-outline-info" %>
-          <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-warning" %>
-          <%= link_to "Delete", article, method: :delete, class: "btn btn-outline-danger" %>
+          <% if logged_in? && article.user == current_user %>
+            <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-warning" %>
+            <%= link_to "Delete", article, method: :delete, class: "btn btn-outline-danger" %>
+          <% end %>
         </div>
       </div>
       <div class="card-footer text-muted">
