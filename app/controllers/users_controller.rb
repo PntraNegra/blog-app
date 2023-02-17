@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy
-    session[:user_id] = nil
+    session[:user_id] = nil if @user == current_user
     respond_to do |format|
       format.html { redirect_to users_url, notice: "User was successfully deleted." }
       format.json { head :no_content }
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
     end
 
     def require_same_user
-      if current_user != @user
+      if current_user != @user && !current_user.admin?
         flash[:alert] = "You can only edit your own account"
         redirect_to @user
       end
